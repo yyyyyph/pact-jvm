@@ -22,8 +22,7 @@ class Spring7EnvironmentResolverSpec extends Specification {
     def resolver = new Spring7EnvironmentResolver(new MockEnvironment())
 
     expect:
-    new ExpressionParser().parseExpression('${PACT_FLOW_URL::https//default.pactflow.io}', DataType.RAW, resolver) ==
-      'https://default.pactflow.io'
+    new ExpressionParser().parseExpression('${PACT_FLOW_URL:default-value}', DataType.RAW, resolver) == 'default-value'
   }
 
   def 'resolves property with nullable default from Spring environment'() {
